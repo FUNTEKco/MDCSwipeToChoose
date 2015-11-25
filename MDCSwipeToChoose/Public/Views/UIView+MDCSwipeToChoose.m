@@ -130,6 +130,12 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 }
 
 - (void)mdc_returnToOriginalCenter {
+    
+    id<MDCSwipeToChooseDelegate> delegate = self.mdc_options.delegate;
+    if ([delegate respondsToSelector:@selector(viewWillCancelSwipe:)]) {
+        [delegate viewWillCancelSwipe:self];
+    }
+    
     [UIView animateWithDuration:self.mdc_options.swipeCancelledAnimationDuration
                           delay:0.0
                         options:self.mdc_options.swipeCancelledAnimationOptions
@@ -191,10 +197,11 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
 #pragma mark Rotation
 
-- (void)mdc_rotateForTranslation:(CGPoint)translation
-               rotationDirection:(MDCRotationDirection)rotationDirection {
+- (void)mdc_rotateForTranslation:(CGPoint)translation rotationDirection:(MDCRotationDirection)rotationDirection {
     CGFloat rotation = MDCDegreesToRadians(translation.x/100 * self.mdc_options.rotationFactor);
     self.layer.transform = CATransform3DMakeRotation(rotationDirection * rotation, 0.0, 0.0, 1.0);
+    
+    
 }
 
 #pragma mark Threshold
