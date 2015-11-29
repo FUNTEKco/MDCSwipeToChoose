@@ -208,7 +208,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     CATransform3D t = CATransform3DIdentity;
     t.m34 = 1.0/ -500;
     
-    CGFloat threhold = self.window.frame.size.width/3;
+    CGFloat threhold = self.window.frame.size.width/2;
 
     float ratio = fabs(translation.x) / threhold;
     ratio = (ratio <= 1) ? ratio : 1;
