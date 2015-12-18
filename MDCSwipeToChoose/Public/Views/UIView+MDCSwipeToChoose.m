@@ -199,12 +199,6 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
 
 - (void)mdc_rotateForTranslation:(CGPoint)translation rotationDirection:(MDCRotationDirection)rotationDirection {
-    
-//    CGFloat rotation = MDCDegreesToRadians(translation.x/100 * self.mdc_options.rotationFactor);
-//    self.layer.transform = CATransform3DMakeRotation(rotationDirection * rotation, 0.0, 0.0, 1.0);
-    //    //    //    //    //    //    //    //    //
-    
-    
     CATransform3D t = CATransform3DIdentity;
     t.m34 = 1.0/ -500;
     
@@ -219,10 +213,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
         t = CATransform3DRotate(t, -(0.7*ratio), 0, 1, 0);
     }
     
-    self.layer.zPosition = 100;
-    
-    NSLog(@"%f",ratio* 0.7);
-    
+    self.layer.zPosition = 100;        
     self.layer.transform = t;
 }
 
