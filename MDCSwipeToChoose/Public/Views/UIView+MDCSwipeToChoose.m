@@ -200,7 +200,8 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
 - (void)mdc_rotateForTranslation:(CGPoint)translation rotationDirection:(MDCRotationDirection)rotationDirection {
     CATransform3D t = CATransform3DIdentity;
-    t.m34 = 1.0/ -500;
+
+    t.m34 = 1.0/ -700;
     
     CGFloat threhold = self.window.frame.size.width/2;
 
@@ -208,12 +209,12 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     ratio = (ratio <= 1) ? ratio : 1;
     
     if(translation.x > 0){
-        t = CATransform3DRotate(t, 0.7*ratio, 0, 1, 0);
+        t = CATransform3DRotate(t, 0.9*ratio, 0, 1, 0);
     }else{
-        t = CATransform3DRotate(t, -(0.7*ratio), 0, 1, 0);
+        t = CATransform3DRotate(t, -(0.9*ratio), 0, 1, 0);
     }
     
-    self.layer.zPosition = 100;        
+    self.layer.zPosition = 100;
     self.layer.transform = t;
 }
 
